@@ -1,3 +1,4 @@
+
 // 1.import express
 const express = require("express")
 
@@ -9,6 +10,9 @@ require("dotenv").config()
 
 //import router
 const router = require("./router")
+
+//10.import connection file
+require("./db/connection")
 
 // 4.create server
 const weCareServer = express()
@@ -22,15 +26,18 @@ weCareServer.use(express.json())
 // use router
 weCareServer.use(router)
 
+//imguploads
+
 // 7. create port
 const PORT = 3000
+
+//9.get request to server
+weCareServer.get("/",(req,res)=>{
+    res.status(200).send(`WeCare server started running successfully and waiting for client request..`)
+})
 
 // 8.server started using listen
 weCareServer.listen(PORT,()=>{
     console.log(`WeCare Server Started Successfully at : ${PORT}`);  
 })
 
-//9.get request to server
-weCareServer.get("/",(req,res)=>{
-    res.status(200).send(`WeCare server started running successfully and waiting for client request..`)
-})
