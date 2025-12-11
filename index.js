@@ -23,10 +23,11 @@ weCareServer.use(cors())
 //6.use middleware
 weCareServer.use(express.json())
 
+//imguploads
+weCareServer.use("/imageUploads",express.static("./imageUploads"))
+
 // use router
 weCareServer.use(router)
-
-//imguploads
 
 // 7. create port
 const PORT = 3000
