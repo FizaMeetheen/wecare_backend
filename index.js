@@ -30,7 +30,7 @@ weCareServer.use("/imageUploads",express.static("./imageUploads"))
 weCareServer.use(router)
 
 // 7. create port
-const PORT = 3000
+const PORT = process.env.PORT || 3000 
 
 //9.get request to server
 weCareServer.get("/",(req,res)=>{
