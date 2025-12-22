@@ -57,9 +57,16 @@ exports.createCheckoutSession = async (req, res) => {
 exports.makeDonationController = async (req, res) => {
   console.log("Inside Make Donation Controller");
 
-  const { donationType, amount, quantity, pickup_location, notes } = req.body;
-  const { id } = req.params;
-  const userMail = req.payload;
+  const { id } = req.params; // ✅ announcement ID from URL
+  const {
+    donationType,
+    amount,
+    quantity,
+    pickup_location,
+    notes
+  } = req.body;
+
+  const userMail = req.payload
 
   try {
     if (!donationType) {
@@ -86,10 +93,13 @@ exports.makeDonationController = async (req, res) => {
 
     await newDonation.save();
     res.status(200).json(newDonation);
+
   } catch (error) {
+    console.log(error);
     res.status(500).json(error);
   }
 };
+
 
 //GET SINGLE DONATION
 exports.getADonationController = async (req, res) => {

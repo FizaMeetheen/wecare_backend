@@ -59,3 +59,15 @@ exports.addReplyController = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+//delete-stories
+exports.deleteCommunityController = async(req,res) => {
+    console.log('inside delete community controller');
+    const {id} = req.params
+    try {
+        const deletedCommunity = await Community.findByIdAndDelete(id)
+        res.status(200).json(deletedCommunity)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}

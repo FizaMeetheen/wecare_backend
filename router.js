@@ -7,7 +7,7 @@ const upload = require("./middleware/imageMulterMiddleware")
 const { eventRegisterController, getAllEventsController } = require("./controller/EventController")
 const { shareStoryController, getAllStoriesController, deleteStoriesController } = require("./controller/storyController")
 const { postAnnouncementController, getVolunteerAnnouncements, getAllAnnouncements, getSingleAnnouncementController, editAnnouncementController, deleteAnnouncementController } = require("./controller/announcementController")
-const { postController, getAllPostsControlller, addReplyController } = require("./controller/communityController")
+const { postController, getAllPostsControlller, addReplyController, deleteCommunityController } = require("./controller/communityController")
 const { addBlogsController, getAllBlogsController, deleteBlogsController, editBlogController } = require("./controller/blogsContoller")
 
 const router = express.Router()
@@ -81,6 +81,9 @@ router.get("/get-allposts",jwtMiddleware,getAllPostsControlller)
 
 //reply
 router.put("/community-reply/:id", jwtMiddleware, addReplyController);
+
+//delete-community
+router.delete("/delete-community/:id",jwtMiddleware,deleteCommunityController)
 
 //-----------------ADMIN-------------------------------
 
